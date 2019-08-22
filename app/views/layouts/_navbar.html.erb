@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <%= link_to "<strong>Redico</strong>".html_safe, root_path, class: "navbar-brand" %>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">User: <%= current_user.username %>&nbsp;</a>
+          </li>
+        <% end %>
+      </ul>
+      <form class="form-inline">
+        <div class="btn-group" role="group" aria-label="Connexions">
+          <% if user_signed_in? %>
+            <%= link_to 'Nouveau Redico', new_topic_path, class: "btn btn-outline-dark" %>
+            <%= link_to 'Se déconnecter', destroy_user_session_path, method: :delete, class: "btn btn-outline-danger" %>
+          <% else %>
+            <%= link_to 'Connexion', new_user_session_path, class: "btn btn-outline-info" %>
+            <%= link_to 'Inscription', new_user_registration_path, class: "btn btn-info" %>
+          <% end %>
+        </div>
+      </form>
+    </div>
+  </nav>
+
+</div>

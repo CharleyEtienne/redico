@@ -1,0 +1,55 @@
+
+    <%= form_with(model: message, local: true) do |form| %>
+      <% if message.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+          <ul>
+            <% message.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= form.hidden_field :topic_id, :value => @topic.id %>
+      <%= form.hidden_field :salve_id, :value => @topic.salves.last.id %>
+
+      <div class="form-group">
+        <%= form.text_area :content, placeholder: "Ajouter une proposition...", :class => "form-control" %>
+        <small id="valueHelp" class="form-text text-muted">
+          * Une proposition ne peut plus être modifiée une fois validée
+        </small>
+      </div>
+
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-md-2">
+            <div class="input-group">
+              <%= form.number_field :note_value, placeholder: "Estimez..", :class => "form-control" %>
+              <div class="input-group-append">
+                <span class="input-group-text" id="basic-addon2">%</span>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <%= form.text_field :url, placeholder: "Lien URL vers un média (vidéo, page internet...)", :class => "form-control" %>
+          </div>
+          <div class="col-md-4">
+            <%= form.text_field :location, placeholder: "Préciser où regarder (ligne, timecode...)", :class => "form-control" %>
+          </div>
+        </div>
+      </div>
+
+
+        <div class="form-row">
+          <div class="col">
+            <%= form.submit "Valider ma proposition", :class => 'btn btn-dark btn-block' %>
+          </div>
+          <div class="col">
+            <%= link_to "Terminer ma salve", finish_path({user: current_user, topic: @topic, salve: @topic.salves.last}), method: :post, class: "btn btn-outline-dark btn-block" %>
+          </div>
+        </div>
+
+
+    <% end %>

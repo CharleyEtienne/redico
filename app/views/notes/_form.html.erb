@@ -1,0 +1,11 @@
+<%= form_with(model: note, local: true) do |form| %>
+  <%= form.hidden_field :topic_id, :value => @topic.id %>
+  <%= form.hidden_field :message_id, :value => @current_message.id %>
+
+  <div class="input-group">
+    <%= form.text_field :value, placeholder: "Noter", :class => "form-control", :size => 3 %>
+    <div class="input-group-append">
+      <%= form.submit "%", class: "btn btn-outline-secondary" %>
+    </div>
+  </div>
+<% end %>

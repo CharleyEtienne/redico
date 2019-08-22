@@ -1,0 +1,13 @@
+<div class="card">
+  <h5 class="card-header"><%= @topic.title %> <small class="float-right">Proposé par <strong><%= @topic.user.login %></strong>, <%= time_ago_in_words(@topic.created_at) %></small></h5>
+  <div class="card-body">
+      <span class="lead"><%= @topic.description %></span>
+  </div>
+  <div class="card-footer">
+    <strong>Participants</strong> :
+    <% participants.each do |participant| %>
+      <%= participant.user.username %><%= ", " if participant != participants.last %>
+    <% end %>
+  </div>
+</div>
+<br/>

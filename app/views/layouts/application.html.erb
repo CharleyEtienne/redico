@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- Title-->
+  <title>Redico | <%= yield :title || "Faites avancer le débat !" %></title>
+
+  <!-- Includes -->
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <%= link_to "<strong>Redico</strong>".html_safe, root_path, class: "navbar-brand" %>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+        <%= link_to 'Accueil', root_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+        <%= link_to 'Redicos', topics_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+        <%= link_to 'Mes Redicos', topics_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+        <%= link_to 'Les Règles', topics_path, class: 'nav-link' %>
+        </li>
+        <% if user_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">User: <%= current_user.username %>&nbsp;</a>
+        </li>
+        <% end %>
+      </ul>
+
+      <form class="form-inline">
+        <div class="btn-group" role="group" aria-label="Connexions">
+          <% if user_signed_in? %>
+            <%= link_to 'Nouveau Redico', new_topic_path, class: "btn btn-outline-dark" %>
+            <%= link_to 'Se déconnecter', destroy_user_session_path, method: :delete, class: "btn btn-outline-danger" %>
+          <% else %>
+            <%= link_to 'Connexion', new_user_session_path, class: "btn btn-outline-info" %>
+            <%= link_to 'Inscription', new_user_registration_path, class: "btn btn-info" %>
+          <% end %>
+        </div>
+      </form>
+    </div>
+  </nav>
+
+</div>
+
+<br/>
+
+<div class="container">
+  <%= yield %>
+</div>
+
+<br/>
+<footer id="sticky-footer" class="py-4 bg-light">
+  <div class="container text-center">
+    <small>
+      <strong>Redico</strong> est totalement <strong>libre de droits</strong> et <strong>open-source</strong>.
+      <br/>Vous pouvez contribuer <a href="https://github.com/CharleyEtienne/redico">ici</a>.
+      <br/>Réalisé et maintenu par <strong>Charley Etienne</strong> avec la participation de <strong>Hygiène Mentale</strong>.
+    </small>
+  </div>
+</footer>
+
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+
+</body>
+</html>

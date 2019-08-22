@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Redico | <%= yield :title %></title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="http://localhost:3000/">
+        <h1 class="title">Redico</h1>
+      </a>
+
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <%= link_to 'Accueil', root_path, class: 'navbar-item' %>
+
+        <%= link_to 'Redicos', topics_path, class: 'navbar-item' %>
+
+        <%= link_to 'Mes Redicos', topics_path, class: 'navbar-item' %>
+
+        <%= link_to 'Les Règles', topics_path, class: 'navbar-item' %>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More
+          </a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              About
+            </a>
+            <a class="navbar-item">
+              Jobs
+            </a>
+            <a class="navbar-item">
+              Contact
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item">
+              Report an issue
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <% if user_signed_in? %>
+              <%= current_user.username %>&nbsp;
+              <%= link_to 'Nouveau Redico', new_topic_path, class: "button is-black" %>
+              <%= link_to 'Se déconnecter', destroy_user_session_path, method: :delete, class: "button is-danger" %>
+            <% else %>
+              <%= link_to 'Connexion', new_user_session_path, class: "button is-primary" %>
+              <%= link_to 'Inscription', new_user_registration_path, class: "button is-light" %>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <br/>
+  <!-- /Header -->
+
+  <div class="columns">
+
+    <% if !notice.blank? %>
+      <div class="column is-half is-offset-one-quarter">
+        <div class="notification is-success">
+          <button class="delete"></button>
+          <%= notice %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if !alert.blank? %>
+      <div class="column is-half is-offset-one-quarter">
+        <div class="notification is-danger">
+          <button class="delete"></button>
+          <%= alert %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+
+  <%= yield %>
+
+</div>
+
+<br/>
+
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>Redico</strong> est totalement <strong>libre de droits</strong> et <strong>open-source</strong>. Vous pouvez contribuer <a href="https://github.com/CharleyEtienne/redico">ici</a>. Réalisé et
+      maintenu par <strong>Charley Etienne</strong> avec la participation de <strong>Hygiène Mentale</strong>.
+    </p>
+  </div>
+</footer>
+
+<script type="text/javascript" charset="utf-8">
+    document.addEventListener('DOMContentLoaded', () => {
+        (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+            $notification = $delete.parentNode;
+            $delete.addEventListener('click', () => {
+                $notification.parentNode.removeChild($notification);
+            });
+        });
+    });
+</script>
+
+
+</body>
+</html>

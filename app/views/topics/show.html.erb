@@ -1,0 +1,64 @@
+<% content_for :title, @topic.title %>
+
+<%= render partial: "topics/partials/presentation" %>
+
+<% if !@salves.first.messages.blank? %>
+  <%= render @salves %>
+<% else %>
+  <div class="card">
+    <div class="card-body">
+      Pas encore de messages dans ce Redico... cela ne devrait pas tarder !
+    </div>
+  </div>
+  <br/>
+<% end %>
+
+<% if je_participe %>
+
+  <% if personne_ne_salve %>
+    <div class="card">
+      <div class="card-body">
+        <h5>
+          <span class="badge badge-secondary">
+            Personne ne salve
+          </span>
+        </h5>
+        <% if jai_salve_en_dernier %>
+          <span>En attente d'un participant...</span>
+        <% else %>
+          <%= link_to "Je prend le relais", take_salve_path({user: current_user, topic: @topic}), method: :post, class: "btn btn-secondary btn-block" %>
+        <% end %>
+
+      </div>
+    </div>
+
+  <% elsif je_salve %>
+    <div class="card">
+      <div class="card-body">
+        <h5>
+          <span class="badge badge-secondary">
+            C'est à vous de salver !
+          </span>
+        </h5>
+        <%= render '/messages/form', message: @message %>
+      </div>
+    </div>
+
+  <% else %>
+    <div class="card">
+      <div class="card-body">
+        <h5>
+          <span class="badge badge-secondary">
+            C'est au tour de <%= @salves.last.user.login %>
+          </span>
+        </h5>
+      </div>
+    </div>
+  <% end %>
+
+<% else %>
+  <hr/>
+
+      <%= link_to "Participer à ce Redico", participate_path({user: current_user, topic: @topic}), method: :post, class: "btn btn-secondary btn-block" %>
+
+<% end %>

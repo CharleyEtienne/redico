@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card-header">
+    Salve de <strong><%= salve.user.username %></strong> <span class="float-right"><%= time_ago_in_words(salve.created_at) %></span>
+    <%= salve.commentary %>
+  </div>
+
+  <div class="card-body">
+    <%= render salve.messages %>
+  </div>
+
+</div>
+<br/>

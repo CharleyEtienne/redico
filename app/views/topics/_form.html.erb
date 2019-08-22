@@ -1,0 +1,33 @@
+<%= form_with(model: topic, local: true) do |form| %>
+  <% if topic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(topic.errors.count, "error") %> prohibited this topic from being saved:</h2>
+
+      <ul>
+        <% topic.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <label class="label"><%= form.label :title %></label>
+    <div class="control">
+      <%= form.text_field :title, :class => "input" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label"><%= form.label :description %></label>
+    <div class="control">
+      <%= form.text_area :description, :class => "textarea" %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Créer le Redico", :class => 'button is-fullwidth is-primary' %>
+  </div>
+
+<% end %>

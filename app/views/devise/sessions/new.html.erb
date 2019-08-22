@@ -1,0 +1,32 @@
+
+<div class="card">
+  <div class="card-body">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+        <div class="form-group">
+          <label><strong>Identifiant</strong></label>
+          <%= f.text_field :login, :class => 'form-control', :placeholder => "Entrez votre identitiant" %>
+          <small id="emailHelp" class="form-text text-muted">Vous pouvez utiliser votre nom d'utilisateur ou votre e-mail.</small>
+        </div>
+
+        <div class="form-group">
+          <strong><%= f.label :password %></strong>
+          <%= f.password_field :password, :class => 'form-control', :placeholder => "Entrez votre mot de passe", autocomplete: "current-password" %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="form-check">
+            <%= f.check_box :remember_me, :class => "form-check-input" %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+
+        <%= f.submit "Valider", :class => 'btn btn-info btn-block' %>
+
+      <% end %>
+
+    </div>
+
+  <p class="text-center"><%= render "devise/shared/links" %></p>
+
+    </div>

@@ -1,0 +1,23 @@
+<% @current_message = message %>
+
+<p class="card-text"><strong>#<%= message.name %></strong> - <%= message.content %>
+  <% if !message.url.blank? %>
+    <a href="<%= message.url %>" data-toggle="tooltip" title="Lien vers <%= message.url %>">
+      <span class="badge badge-info">
+      Lien vers le media <% if !message.location.blank? %> (<%= message.location %>) <% end %>
+      </span>
+    </a>
+  <% end %>
+
+  <div class="form-group row align-items-center">
+    <div class="col-2">
+      <%= ma_note message %>
+    </div>
+    <div class="col">
+      <%= render autre_notes message %>
+    </div>
+  </div>
+  <% if !message_iteration.last? %>
+  <hr/>
+  <% end %>
+</p>
