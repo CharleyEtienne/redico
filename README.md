@@ -15,6 +15,8 @@ Pour en savoir plus, je vous invite a consulter directement le form des sceptiqu
 
 * Ruby 2.6.3 - Version de ruby lors de la creation
 
+* [Gem : Devise](https://github.com/plataformatec/devise) - Système d'authentification pour Rails
+
 ## Contribuer
 
-Toutes les pull requests sont les bienvenues ! Veillez à lire le fichier pour les contributeurs afin de connaitre le process.
+Les contributions seront bientôt disponible ! La rédaction du fichier de process pour les contributeurs est en cours.

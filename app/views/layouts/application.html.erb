@@ -44,7 +44,7 @@
         <%= link_to 'Mes Redicos', topics_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
-        <%= link_to 'Les Règles', topics_path, class: 'nav-link' %>
+        <%= link_to 'Les Règles', regles_path, class: 'nav-link' %>
         </li>
         <% if user_signed_in? %>
         <li class="nav-item">
@@ -80,7 +80,7 @@
   <div class="container text-center">
     <small>
       <strong>Redico</strong> est totalement <strong>libre de droits</strong> et <strong>open-source</strong>.
-      <br/>Vous pouvez contribuer <a href="https://github.com/CharleyEtienne/redico">ici</a>.
+      <br/>Vous pouvez contribuer <%= link_to 'ici', "https://github.com/CharleyEtienne/redico", target: "_blank" %>.
       <br/>Réalisé et maintenu par <strong>Charley Etienne</strong> avec la participation de <strong>Hygiène Mentale</strong>.
     </small>
   </div>

@@ -1,0 +1,27 @@
+<%= form_with(model: regle, local: true) do |form| %>
+  <% if regle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(regle.errors.count, "error") %> prohibited this regle from being saved:</h2>
+
+      <ul>
+        <% regle.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :num %>
+    <%= form.number_field :num %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

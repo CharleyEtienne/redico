@@ -2,6 +2,13 @@
 
 <%= render partial: "topics/partials/presentation" %>
 
+<h4 class="text-center">
+  Règles :
+<% @regles.each do |regle| %>
+  <span class="badge badge-secondary" data-toggle="tooltip" title="<%= regle.content %>">#<%= regle.num %></span>
+<% end %>
+</h4>
+<br/>
 <% if !@salves.first.messages.blank? %>
   <%= render @salves %>
 <% else %>

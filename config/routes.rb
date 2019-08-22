@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :regles
   resources :notes
   resources :messages
   resources :salves

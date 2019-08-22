@@ -14,6 +14,7 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
+    @regles = Regle.all
     @salves = @topic.salves.order('created_at ASC')
     @message = Message.new
     @note = Note.new

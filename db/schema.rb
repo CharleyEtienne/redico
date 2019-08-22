@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_19_143051) do
+ActiveRecord::Schema.define(version: 2019_08_22_160403) do
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(version: 2019_08_19_143051) do
     t.boolean "status"
     t.index ["topic_id"], name: "index_participations_on_topic_id"
     t.index ["user_id"], name: "index_participations_on_user_id"
+  end
+
+  create_table "regles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+    t.integer "num"
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "salves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|

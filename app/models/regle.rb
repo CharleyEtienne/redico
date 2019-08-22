@@ -1,0 +1,2 @@
+class Regle < ApplicationRecord
+end
