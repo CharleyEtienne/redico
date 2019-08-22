@@ -1,24 +1,20 @@
-# README
+# Redico
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Application de Redico open-source et ouvert à tous.
 
-Things you may want to cover:
+## Qu'est-ce que le Redico
+Pour en savoir plus, je vous invite a consulter directement le form des sceptiques du Quebec :
 
-* Ruby version
+[En savoir plus sur le Redico](https://www.sceptiques.qc.ca/forum/redico)
 
-* System dependencies
+## Fait avec
 
-* Configuration
+* [Bootstrap 4](https://getbootstrap.com/) - Framework CSS
 
-* Database creation
+* [Ruby on rails - 6.0.0.rc2](https://rubyonrails.org/) - Framework Ruby
 
-* Database initialization
+* Ruby 2.6.3 - Version de ruby lors de la creation
 
-* How to run the test suite
+## Contribuer
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Toutes les pull requests sont les bienvenues ! Veillez à lire le fichier pour les contributeurs afin de connaitre le process.
