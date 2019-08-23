@@ -2,8 +2,8 @@ class User < ApplicationRecord
 
   # Relationships
   has_many :topics
-  has_many :participations, :dependent => :destroy
-  has_many :messages, :dependent => :destroy
+  has_many :participations, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

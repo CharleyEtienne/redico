@@ -2,7 +2,7 @@
 
 <p class="card-text"><strong>#<%= message.name %></strong> - <%= message.content %>
   <% if !message.url.blank? %>
-    <a href="<%= message.url %>" data-toggle="tooltip" title="Lien vers <%= message.url %>">
+    <a href="<%= message.url %>" target="_blank" data-toggle="tooltip" title="Lien vers <%= message.url %>">
       <span class="badge badge-info">
       Lien vers le media <% if !message.location.blank? %> (<%= message.location %>) <% end %>
       </span>
