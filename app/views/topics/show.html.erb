@@ -32,6 +32,7 @@
         </h5>
         <% if jai_salve_en_dernier %>
           <span>En attente d'un participant...</span>
+          <%= link_to "Rafraîchir la page", topic_path(@topic, anchor: "refresh"), id: "refresh", class: "btn btn-outline-secondary btn-block" %>
         <% else %>
           <%= link_to "Je prend le relais", take_salve_path({user: current_user, topic: @topic}), method: :post, class: "btn btn-secondary btn-block" %>
         <% end %>
@@ -59,6 +60,8 @@
             C'est au tour de <%= @salves.last.user.login %>
           </span>
         </h5>
+        <span><%= @salves.last.user.login %> est en train de salver...</span>
+        <%= link_to "Rafraîchir la page", topic_path(@topic, anchor: "refresh"), id: "refresh", class: "btn btn-outline-secondary btn-block" %>
       </div>
     </div>
   <% end %>
