@@ -44,11 +44,11 @@ test:
 #
 # You can use this database configuration with:
 #
-#   production:
-#     url: <%= ENV['DATABASE_URL'] %>
-#
 production:
-  <<: *default
-  database: redico_production
-  username: redico
-  password: <%= ENV['REDICO_DATABASE_PASSWORD'] %>
+  url: postgres://negehosfdxgesb:802e2644a81304577a9ed561dcabfa591caa84cccecf0ec814494878b5c2a807@ec2-23-21-91-183.compute-1.amazonaws.com:5432/d9cv6im6vg7hl1
+#
+#production:
+#  <<: *default
+#  database: redico_production
+#  username: redico
+#  password: <%= ENV['REDICO_DATABASE_PASSWORD'] %>
