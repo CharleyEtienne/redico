@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get 'home/private'
+  get 'topics/mine', to: 'topics#mine', as: 'mine'
+
   match "/participate" => "participation#participate", :via => :post, :as => :participate
   match "/salve" => "salves#finish", :via => :post, :as => :finish
   match "/take_salve" => "salves#take_salve", :via => :post, :as => :take_salve

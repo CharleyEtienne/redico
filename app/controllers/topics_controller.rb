@@ -3,12 +3,16 @@ class TopicsController < ApplicationController
 
   # Only for members
   before_action :authenticate_user!
-  before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :set_topic, only: [:show, :edit, :mine, :update, :destroy]
 
   # GET /topics
   # GET /topics.json
   def index
     @topics = Topic.all
+  end
+
+  def mine
+    @topics = Topic.joins(:participation).where(participation: { status: true, user_id: current_user.id })
   end
 
   # GET /topics/1
