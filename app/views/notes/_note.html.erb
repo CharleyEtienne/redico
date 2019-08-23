@@ -1,1 +1,4 @@
 <%= note.user.username %>: <strong><%= note.value %></strong>%
+<% if !note_iteration.last? %>
+  -
+<% end %>
