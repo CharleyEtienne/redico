@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2019_08_22_160403) do
 
-  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "messages", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "salve_id", null: false
     t.string "content"
@@ -25,7 +28,7 @@ ActiveRecord::Schema.define(version: 2019_08_22_160403) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "notes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+  create_table "notes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "message_id", null: false
     t.integer "value"
@@ -35,7 +38,7 @@ ActiveRecord::Schema.define(version: 2019_08_22_160403) do
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
-  create_table "participations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+  create_table "participations", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "topic_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -45,14 +48,14 @@ ActiveRecord::Schema.define(version: 2019_08_22_160403) do
     t.index ["user_id"], name: "index_participations_on_user_id"
   end
 
-  create_table "regles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+  create_table "regles", force: :cascade do |t|
     t.integer "num"
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "salves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+  create_table "salves", force: :cascade do |t|
     t.bigint "topic_id", null: false
     t.bigint "user_id", null: false
     t.boolean "finished"
@@ -63,7 +66,7 @@ ActiveRecord::Schema.define(version: 2019_08_22_160403) do
     t.index ["user_id"], name: "index_salves_on_user_id"
   end
 
-  create_table "topics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+  create_table "topics", force: :cascade do |t|
     t.string "title"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -74,7 +77,7 @@ ActiveRecord::Schema.define(version: 2019_08_22_160403) do
     t.index ["user_id"], name: "index_topics_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
