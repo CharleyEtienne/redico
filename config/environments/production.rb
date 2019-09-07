@@ -61,10 +61,10 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "redico_production"
 
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { host: 'pacific-tor-18756.herokuapp.com'}
+  config.action_mailer.default_url_options = { host: 'smtp.sendgrid.net'}
 
   ActionMailer::Base.smtp_settings = {
-    address: 'smtp.sendgrid.net',
+    address: 'pacific-tor-18756.herokuapp.com',
     port: '587',
     authentication: :plain,
     user_name: ENV['SENDGRID_USERNAME'],
