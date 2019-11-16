@@ -2,7 +2,7 @@
 
 Application de Redico open-source et ouvert à tous.
 
-[Lien vers le site](http://redico.herokuapp.com/regles)
+[Lien vers le site](http://redico.herokuapp.com/)
 
 ## Qu'est-ce que le Redico
 Pour en savoir plus, je vous invite a consulter directement le form des sceptiques du Quebec :
